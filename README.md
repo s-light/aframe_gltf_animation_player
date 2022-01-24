@@ -1,8 +1,26 @@
-# Aframe gltf animation player
+# Aframe GLTF animation player (aframe_gltf_animation_player)
 
-a simple aframe example how to play different animations from a gltf file.
+a simple aframe app to display GLTF animations
 
-live preview: https://s-light.github.io/aframe_gltf_animation_player/dist/
+## Install the dependencies
+```bash
+yarn
+```
 
+### Start the app in development mode (hot-code reloading, error reporting, etc.)
+```bash
+quasar dev
+```
 
-TODO: more documentation :-)
+### Lint the files
+```bash
+yarn run lint
+```
+
+### Build the app for production
+```bash
+quasar build
+```
+
+### Customize the configuration
+See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
