@@ -165,7 +165,23 @@
 </template>
 
 <script>
+
+import 'aframe';
+import 'aframe-extras';
+import 'aframe-orbit-controls';
+
+// import  initMyAframeComponents from '@/composables/my-aframe-components.js';
+
+
 export default {
+    name: 'Aframe',
+    setup () {
+        initMyAframeComponents()
+       // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
+       return {
+           // file: ref(null)
+       }
+    }
 }
 </script>
 

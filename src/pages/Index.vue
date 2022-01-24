@@ -1,28 +1,84 @@
 <template>
-  <q-page class="flex flex-center">
-      <aframe>
-      </aframe>
-      <div class="overlay">
-          <section class="load_model">
-              <h1>Load Model</h1>
-              <label for="model_file">open a gltf model:</label>
-              <input
-                  type="file"
-                  id="model_file" name="model_file"
-                  accept=".gltf, .glb"
-              />
-          </section>
-          <section class="animation_controls">
-              <h1>Animation Controls</h1>
-              <div id="animation_list">
-                  <ul>
-                      <li>-</li>
-                  </ul>
-              </div>
-          </section>
-      </div>
-  </q-page>
+    <q-page class="flex flex-center">
+        <aframe>
+        </aframe>
+        <div class="overlay">
+            <section class="load_model">
+                <h1>Load Model</h1>
+                <q-file
+                    v-model="file"
+                    label="Pick one file"
+                    filled
+                    accept=".gltf, .glb"
+                />
+            </section>
+            <section class="animation_controls">
+                <h1>Animation Controls</h1>
+                <div id="animation_list">
+                    <ul>
+                        <li>-</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </q-page>
 </template>
+
+
+
+
+<script>
+import {
+    defineComponent,
+    ref,
+    onMounted
+} from 'vue';
+
+// import connectionGoalDetectionMini from '@/composables/connectionGoalDetectionMini'
+
+import Aframe from 'components/aframe.vue'
+
+
+
+export default defineComponent({
+    name: 'PageIndex',
+    setup () {
+        // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
+        return {
+            file: ref(null)
+        }
+    }
+})
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style lang="scss">
 section {
@@ -104,36 +160,3 @@ a-loader-title {
 }
 
 </style>
-
-
-
-
-
-
-
-
-<script>
-import {
-    defineComponent,
-    ref,
-    onMounted
-} from 'vue';
-
-// import connectionGoalDetectionMini from '@/composables/connectionGoalDetectionMini'
-
-import Aframe from 'components/aframe.vue'
-
-
-
-export default defineComponent({
-    name: 'PageIndex',
-    setup () {
-       // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
-       return {
-           file: ref(null)
-       }
-    }
-})
-
-
-</script>
