@@ -1,0 +1,8 @@
+{
+    "name": "aframe_gltf_animation_player",
+    "version": "0.0.1",
+    "description": "a simple aframe app to display GLTF animations",
+    "productName": "Aframe GLTF animation player",
+    "projectUrl": "https://github.com/s-light/aframe_gltf_animation_player",
+    "previewUrl": "https://s-light.github.io/aframe_gltf_animation_player/dist/spa/#/"
+}
