@@ -4,7 +4,24 @@ node_modules
 
 # Quasar core related directories
 .quasar
-/dist
+# /dist
+
+# allow build for preview on github pages
+!dist/*
+!dist/spa
+
+# exclude hot update js
+dist/*.hot-update*
+
+# blender backups
+*.blend1
+*.blend2
+*.blend3
+*.blend4
+*.blend5
+
+
+
 
 # Cordova related directories and files
 /src-cordova/node_modules

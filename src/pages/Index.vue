@@ -1,30 +1,26 @@
 <template>
   <q-page class="flex flex-center">
-    <!-- <img
-    alt="Quasar logo"
-    src="~assets/quasar-logo-vertical.svg"
-    style="width: 200px; height: 200px"
-    > -->
-    <section>
-        <div class="top_line">
-            <button
-                type="button" name="reset" v-on:click="goal1=0; goal2=0;"
-            >
-                Reset
-            </button>
-            connected: {{ connected }}
-        </div>
-        <div class="goal_info">
-            <div>
-                <p>goal1</p>
-                <h1>{{ goal1 }}</h1>
-            </div>
-            <div>
-                <p>goal2</p>
-                <h1>{{ goal2 }}</h1>
-            </div>
-        </div>
-    </section>
+      <aframe>
+      </aframe>
+      <div class="overlay">
+          <section class="load_model">
+              <h1>Load Model</h1>
+              <label for="model_file">open a gltf model:</label>
+              <input
+                  type="file"
+                  id="model_file" name="model_file"
+                  accept=".gltf, .glb"
+              />
+          </section>
+          <section class="animation_controls">
+              <h1>Animation Controls</h1>
+              <div id="animation_list">
+                  <ul>
+                      <li>-</li>
+                  </ul>
+              </div>
+          </section>
+      </div>
   </q-page>
 </template>
 
@@ -107,30 +103,36 @@ a-loader-title {
     z-index: 100;
 }
 
-
 </style>
+
+
+
+
+
+
+
 
 <script>
 import {
-  defineComponent,
-  ref,
-  onMounted
+    defineComponent,
+    ref,
+    onMounted
 } from 'vue';
 
 // import connectionGoalDetectionMini from '@/composables/connectionGoalDetectionMini'
 
-import connectionGoalDetectionMini from '../composables/connectionGoalDetectionMini'
+import Aframe from 'components/aframe.vue'
+
+
 
 export default defineComponent({
-  name: 'PageIndex',
-  setup () {
-     const { connected, goal1, goal2 } = connectionGoalDetectionMini()
-     return {
-       connected,
-       goal1,
-       goal2
-     }
-  }
+    name: 'PageIndex',
+    setup () {
+       // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
+       return {
+           file: ref(null)
+       }
+    }
 })
 
 

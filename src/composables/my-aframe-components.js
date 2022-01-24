@@ -1,6 +1,12 @@
+import {
+    ref,
+    toRefs,
+    toRaw,
+    watch,
+    onUnmounted
+} from 'vue';
+
 import 'aframe';
-
-
 
 const component_init_scene = {
     init: function () {
@@ -46,10 +52,20 @@ const component_modify_materials =  {
 
 
 
-export default function registerComponents() {
+export default function myAframeComponents() {
 
-    AFRAME.registerComponent('init_scene', component_init_scene);
+    const onMounted_setup = () => {
+        AFRAME.registerComponent('init_scene', component_init_scene);
+        AFRAME.registerComponent('modify_materials', component_modify_materials);
+    }
+    onMounted(onMounted_setup)
 
-    AFRAME.registerComponent('modify_materials', component_modify_materials);
+    const cleanup = () => {
+        // nothing to do.
+    }
+    onUnmounted(cleanup)
 
+    return {
+        // connected,
+    }
 }
