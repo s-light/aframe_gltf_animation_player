@@ -1,0 +1,62 @@
+/* to display text in front of the aframe canvas*/
+
+
+/* move html content out of visible space */
+body.home:not(.no-js) .site {
+	position: relative;
+	top: 100vh;
+    /* background-color: black !important; */
+}
+
+a-assets {
+    visibility: hidden;
+}
+
+a-loader-title {
+    height: 0;
+    width: 0;
+}
+
+
+
+
+
+/* aframe stats */
+.rs-base {
+    font-size: 20px !important;
+    line-height: 20px !important;
+    width: 550px !important;
+}
+
+.rs-counter-base {
+    height: 30px !important;
+}
+
+.rs-counter-id {
+    width: 120px !important;
+}
+
+.rs-counter-value {
+    width: 50px !important;
+}
+
+canvas.rs-canvas {
+    width: 300px !important;
+    height: 20px !important;
+}
+
+
+
+
+/* overlay things */
+/* section-wrapper */
+.overlay {
+    display: block;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    /* max-width: calc(99vw - 2em); */
+    /* max-height: calc(99vh - 2em); */
+    /* height: calc(99vh - 2em); */
+    z-index: 100;
+}

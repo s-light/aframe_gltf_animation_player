@@ -1,0 +1,30 @@
+{
+  "name": "aframe_gltf_animaiton_player",
+  "version": "0.1.0",
+  "description": "aframe simple gltf animation showcase",
+  "author": "s-light <git@s-light.eu>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress --stats-children",
+    "build_help": "webpack --help",
+    "watch": "webpack --watch --progress --stats-children",
+    "start": "webpack serve --progress --stats-children"
+  },
+  "dependencies": {
+    "aframe": "^1.2.0",
+    "aframe-extras": "^6.1.1",
+    "aframe-gradient-sky": "^1.0.4",
+    "aframe-sun-sky": "^3.0.3"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^8.1.1",
+    "css-loader": "^5.2.1",
+    "mini-css-extract-plugin": "^1.4.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.27.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
