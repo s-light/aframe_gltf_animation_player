@@ -1,7 +1,9 @@
 <template>
     <q-page class="flex flex-center">
-        <aframe>
-        </aframe>
+        <aframe
+            :file="file"
+            v-model:animations="animations"
+        ></aframe>
         <div class="overlay">
             <section class="load_model">
                 <h1>Load Model</h1>
@@ -27,14 +29,17 @@
 
 
 
+
+
+
+
 <script>
 import {
     defineComponent,
     ref,
     onMounted
 } from 'vue';
-
-// import connectionGoalDetectionMini from '@/composables/connectionGoalDetectionMini'
+// import { useQuasar } from 'quasar'
 
 import Aframe from 'components/aframe.vue'
 
@@ -43,8 +48,11 @@ import Aframe from 'components/aframe.vue'
 export default defineComponent({
     name: 'PageIndex',
     setup () {
+        // const $q = useQuasar()
+        const animations = ref({})
         // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
         return {
+            animations:animations,
             file: ref(null)
         }
     }
@@ -63,86 +71,7 @@ export default defineComponent({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style lang="scss">
-section {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: center;
-    align-items: stretch;
-    width: 100%;
-    height: 100%;
-}
-
-section .top_line,
-section .goal_info {
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
-}
-
-section .top_line {
-    /* background-color: hsl(200, 100%, 50%); */
-    text-align: center;
-}
-
-.goal_info {
-    flex: 1 1 auto;
-}
-
-.goal_info {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: center;
-    align-items: stretch;
-}
-
-.goal_info > div {
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
-    margin: 0 1em;
-    text-align: center;
-}
-
-
-/* to display text in front of the aframe canvas*/
-
-
-
-a-assets {
-    visibility: hidden;
-}
-
-a-loader-title {
-    height: 0;
-    width: 0;
-}
-
-
-
-
-
 
 
 

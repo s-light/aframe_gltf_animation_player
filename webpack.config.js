@@ -62,4 +62,10 @@ module.exports = {
         // publicPath: './dist/',
         watchContentBase: true,
     },
+    // hmm does not solve it for me :-(
+    // resolve: {
+    //     // this allows us to have a symlinked afram.vue file...
+    //     // https://github.com/webpack/webpack/issues/1643#issuecomment-956196352
+    //     symlinks: false
+    // }
 };

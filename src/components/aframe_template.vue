@@ -11,6 +11,8 @@
         init_scene
     >
         <a-assets>
+            <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
+
             ${asset}
         </a-assets>
 
@@ -153,20 +155,31 @@ import 'aframe';
 import 'aframe-extras';
 import 'aframe-orbit-controls';
 
-// import  initMyAframeComponents from '@/composables/my-aframe-components.js';
+import  myAframeComponents from './my-aframe-components.js';
 
 
 export default {
     name: 'Aframe',
+    model: {
+        prop: 'title',
+        event: 'change'
+    },
     setup () {
-        initMyAframeComponents()
+        myAframeComponents()
        // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
+       file = "./assets/Cube.gltf"
+       file_obj = ref(URL.createObjectURL(file))
        return {
-           // file: ref(null)
+           file_obj: file_obj
        }
     }
 }
 </script>
 
 <style lang="css" scoped>
+
+a-scene {
+    min-width: 100px;
+    min-height: 100px;
+}
 </style>

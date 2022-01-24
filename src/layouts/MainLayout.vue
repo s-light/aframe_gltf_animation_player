@@ -56,6 +56,7 @@
 <script>
 
 import { defineComponent, ref } from 'vue'
+
 // import packageInfo from '../../package.json'
 // we do not import the package.json as this could be a security concern.
 import appinfo from '../../appinfo.json'
