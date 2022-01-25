@@ -45,31 +45,51 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+        vueRouterMode: 'hash', // available values: 'hash', 'history'
 
-      // transpile: false,
-      // publicPath: '/',
+        // transpile: false,
+        // publicPath: '/',
 
-      // Add dependencies for transpiling with Babel (Array of string/regex)
-      // (from node_modules, which are by default not transpiled).
-      // Applies only if "transpile" is set to true.
-      // transpileDependencies: [],
+        // Add dependencies for transpiling with Babel (Array of string/regex)
+        // (from node_modules, which are by default not transpiled).
+        // Applies only if "transpile" is set to true.
+        // transpileDependencies: [],
 
-      // rtl: true, // https://quasar.dev/options/rtl-support
-      // preloadChunks: true,
-      // showProgress: false,
-      // gzip: true,
-      // analyze: true,
+        // rtl: true, // https://quasar.dev/options/rtl-support
+        // preloadChunks: true,
+        // showProgress: false,
+        // gzip: true,
+        // analyze: true,
 
-      // Options below are automatically set depending on the env, set them if you want to override
-      // extractCSS: false,
+        // Options below are automatically set depending on the env, set them if you want to override
+        // extractCSS: false,
 
-      // https://quasar.dev/quasar-cli/handling-webpack
-      // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpack (chain) {
-        chain.plugin('eslint-webpack-plugin')
-          .use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }])
-      },
+        // https://quasar.dev/quasar-cli/handling-webpack
+        // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
+        chainWebpack (chain) {
+            chain.plugin('eslint-webpack-plugin')
+            .use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }])
+        },
+        vueLoaderOptions: {
+            compilerOptions: {
+                // https://v3.vuejs.org/guide/migration/custom-elements-interop.html#_3-x-syntax
+                // https://v3.vuejs.org/api/application-config.html#compileroptions-iscustomelement
+                // https://stackoverflow.com/a/68419943/574981
+                // https://github.com/quasarframework/quasar/discussions/11752#discussioncomment-1858729
+                // mark all aframe elements
+                isCustomElement: tag => tag.startsWith('a-')
+                // isCustomElement: (tag) => {
+                //     let check = false
+                //     if (tag.startsWith('something other')) {
+                //         check = true
+                //     }
+                //     if (tag.startsWith('a-')) {
+                //         check = true
+                //     }
+                //     return check
+                // }
+            }
+        },
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer

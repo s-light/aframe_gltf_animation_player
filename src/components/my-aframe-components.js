@@ -56,6 +56,7 @@ const component_modify_materials =  {
 export default function myAframeComponents() {
 
     const onMounted_setup = () => {
+        console.log("myAframeComponents: registering Components..");
         AFRAME.registerComponent('init_scene', component_init_scene);
         AFRAME.registerComponent('modify_materials', component_modify_materials);
     }

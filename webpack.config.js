@@ -49,29 +49,6 @@ module.exports = {
                     filename: 'fonts/[name]_[hash][ext][query]'
                 },
             },
-            {
-                // https://v3.vuejs.org/guide/migration/custom-elements-interop.html#_3-x-syntax
-                // https://v3.vuejs.org/api/application-config.html#compileroptions-iscustomelement
-                // https://stackoverflow.com/a/68419943/574981
-                test: /\.vue$/,
-                use: 'vue-loader',
-                options: {
-                    compilerOptions: {
-                        // mark all aframe elements
-                        isCustomElement: tag => tag.startsWith('a-')
-                        // isCustomElement: (tag) => {
-                        //     let check = false
-                        //     if (tag.startsWith('something other')) {
-                        //         check = true
-                        //     }
-                        //     if (tag.startsWith('a-')) {
-                        //         check = true
-                        //     }
-                        //     return check
-                        // }
-                    }
-                }
-            },
         ],
     },
     devtool: 'source-map',

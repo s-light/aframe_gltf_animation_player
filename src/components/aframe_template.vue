@@ -37,6 +37,7 @@
 
         <!-- Camera -->
         <!-- https://github.com/supermedium/superframe/tree/master/components/orbit-controls -->
+        <!-- https://stackoverflow.com/questions/53435562/enable-orbit-controls-in-vr -->
         <a-entity id="camera"
             camera="
                 fov:  60;
@@ -156,6 +157,11 @@
 </template>
 
 <script>
+import {
+    defineComponent,
+    ref,
+    onMounted
+} from 'vue';
 
 import 'aframe';
 import 'aframe-extras';
@@ -173,15 +179,16 @@ export default {
         prop: 'title',
         event: 'change'
     },
-    // setup () {
-    //     myAframeComponents()
-    //    // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
-    //    var file = "./assets/Cube.gltf"
-    //    file_obj = ref(URL.createObjectURL(file))
-    //    return {
-    //        file_obj: file_obj
-    //    }
-    // }
+    setup () {
+        myAframeComponents()
+       // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
+       // var file = "./assets/Cube.gltf"
+       // console.log("URL.createObjectURL(file)", URL.createObjectURL(this.file))
+       const file_obj = ref("")
+       return {
+           file_obj: file_obj
+       }
+    }
 }
 </script>
 

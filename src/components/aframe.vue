@@ -7,7 +7,7 @@
         device-orientation-permission-ui="enabled: false"
         loading-screen="dotsColor: gray; backgroundColor: transparent"
         stats
-
+        
         shadow="type: pcfsoft; autoUpdate: true;"
         renderer="
             antialias: true;
@@ -40,7 +40,7 @@
             animation__click="property: object3D.rotation.x; to: '*=4'; dur: 3000; startEvents: click;"
         ></a-box>
 
-                        <a-entity
+                        <a-entity 
                     gltf-model="#Cube"
 
                     id="#Cube"
@@ -54,6 +54,7 @@
 
         <!-- Camera -->
         <!-- https://github.com/supermedium/superframe/tree/master/components/orbit-controls -->
+        <!-- https://stackoverflow.com/questions/53435562/enable-orbit-controls-in-vr -->
         <a-entity id="camera"
             camera="
                 fov:  60;
@@ -95,7 +96,7 @@
             showLine: true;
             lineColor: red;
             lineOpacity: 0.5
-
+            
             -->
             </a-entity>
         </a-entity>
@@ -198,8 +199,8 @@ export default {
     setup () {
         myAframeComponents()
        // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
-       var file = "./assets/Cube.gltf"
-       // URL.createObjectURL(file)
+       // var file = "./assets/Cube.gltf"
+       // console.log("URL.createObjectURL(file)", URL.createObjectURL(this.file))
        const file_obj = ref("")
        return {
            file_obj: file_obj
