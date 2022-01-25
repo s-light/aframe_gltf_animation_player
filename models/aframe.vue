@@ -1,1 +1,0 @@
-../src/components/aframe_template.vue

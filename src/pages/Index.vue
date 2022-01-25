@@ -5,6 +5,7 @@
             class="absolute-full"
             :file="file"
             v-model:animations="animations"
+
         ></aframe>
         <div class="overlay">
             <section class="load_model">
@@ -24,6 +25,7 @@
                     </ul>
                 </div>
             </section>
+            <!-- <img id="sky" src="~assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" /> -->
         </div>
     </q-page>
 </template>

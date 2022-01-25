@@ -18,14 +18,14 @@
         "
         init_scene
     >
-        <!-- MAGIC-COMMENT src_prepend="./assets/aframe_things" -->
+        <!-- MAGIC-COMMENT src_prepend="~assets/aframe_things" -->
         <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"assets/aframe_things/" -->
         <a-assets>
             <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
-            <a-asset-item id="TestCube" src="./assets/aframe_things/assets/aframe_things/assets/Cube.gltf" ></a-asset-item>
-                            <a-asset-item id="Cube" src="./assets/aframe_things/assets/Cube.gltf" ></a-asset-item>
+            <a-asset-item id="TestCube" src="~assets/aframe_things/assets/aframe_things/assets/Cube.gltf" ></a-asset-item>
+                            <a-asset-item id="Cube" src="~assets/aframe_things/assets/Cube.gltf" ></a-asset-item>
 
-            <!-- <img id="sky" src="./assets/aframe_things/assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" /> -->
+            <img id="sky" src="~assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
         </a-assets>
 
         <a-box
