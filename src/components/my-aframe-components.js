@@ -53,30 +53,36 @@ const component_modify_materials =  {
 
 
 
+export function registerMyAframeComponents() {
+
+    console.log("myAframeComponents: registering Components..");
+
+    function handle_registerComponent_Error(error) {
+        if (error.message.includes("has been already registered.")) {
+            console.log("error", error.message);
+        } else {
+            throw error
+        }
+    }
+
+    try {
+        AFRAME.registerComponent('init_scene', component_init_scene);
+    } catch (e) {
+        handle_registerComponent_Error(e)
+    }
+    try {
+        AFRAME.registerComponent('modify_materials', component_modify_materials);
+    } catch (e) {
+        handle_registerComponent_Error(e)
+    }
+}
+
+
+
 export default function myAframeComponents() {
 
     const onMounted_setup = () => {
-        console.log("myAframeComponents: registering Components..");
-
-        function handle_registerComponent_Error(error) {
-            console.log("error", error);
-            if (error.message.includes("has been already registered.")) {
-                console.log("error", error);
-            } else {
-                throw error
-            }
-        }
-
-        try {
-            AFRAME.registerComponent('init_scene', component_init_scene);
-        } catch (e) {
-            handle_registerComponent_Error(e)
-        }
-        try {
-            AFRAME.registerComponent('modify_materials', component_modify_materials);
-        } catch (e) {
-            handle_registerComponent_Error(e)
-        }
+        registerMyAframeComponents()
     }
     onMounted(onMounted_setup)
 

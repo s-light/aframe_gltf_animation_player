@@ -7,7 +7,7 @@
         device-orientation-permission-ui="enabled: false"
         loading-screen="dotsColor: gray; backgroundColor: transparent"
         stats
-        
+
         shadow="type: pcfsoft; autoUpdate: true;"
         renderer="
             antialias: true;
@@ -22,10 +22,10 @@
         <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"assets/aframe_things/" -->
         <a-assets>
             <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
-            <a-asset-item id="TestCube" src="~assets/aframe_things/assets/aframe_things/assets/Cube.gltf" ></a-asset-item>
-                            <a-asset-item id="Cube" src="~assets/aframe_things/assets/Cube.gltf" ></a-asset-item>
-
-            <img id="sky" src="~assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
+            <!-- <a-asset-item id="CubeX" src="~assets/aframe_things/assets/Cube.gltf" ></a-asset-item> -->
+            <!-- <a-asset-item id="Cube" src="~assets/aframe_things/assets/Cube.gltf" ></a-asset-item> -->
+            <a-asset-item id="CubeX" src="~assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" ></a-asset-item>
+            <img id="sky"            src="~assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
         </a-assets>
 
         <a-box
@@ -40,7 +40,7 @@
             animation__click="property: object3D.rotation.x; to: '*=4'; dur: 3000; startEvents: click;"
         ></a-box>
 
-                        <a-entity 
+                        <a-entity
                     gltf-model="#Cube"
 
                     id="#Cube"
@@ -96,7 +96,7 @@
             showLine: true;
             lineColor: red;
             lineOpacity: 0.5
-            
+
             -->
             </a-entity>
         </a-entity>
@@ -198,6 +198,7 @@ export default {
     },
     setup () {
         myAframeComponents()
+        // ^ this is now done in a boot file.
        // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
        // var file = "./assets/Cube.gltf"
        // console.log("URL.createObjectURL(file)", URL.createObjectURL(this.file))

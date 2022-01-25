@@ -22,6 +22,7 @@ module.exports = configure(function (ctx) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
+        'aframe_config'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -46,7 +47,6 @@ module.exports = configure(function (ctx) {
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
         vueRouterMode: 'hash', // available values: 'hash', 'history'
-
         // transpile: false,
         // publicPath: '/',
 
@@ -70,6 +70,11 @@ module.exports = configure(function (ctx) {
             chain.plugin('eslint-webpack-plugin')
             .use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }])
         },
+        transformAssetUrls: {
+            aAssetItem: 'src',
+            'a-asset-item': 'src',
+            'a-entity': 'src',
+        },
         vueLoaderOptions: {
             compilerOptions: {
                 // https://v3.vuejs.org/guide/migration/custom-elements-interop.html#_3-x-syntax
@@ -77,7 +82,7 @@ module.exports = configure(function (ctx) {
                 // https://stackoverflow.com/a/68419943/574981
                 // https://github.com/quasarframework/quasar/discussions/11752#discussioncomment-1858729
                 // mark all aframe elements
-                isCustomElement: tag => tag.startsWith('a-')
+                isCustomElement: tag => tag.startsWith('a-'),
                 // isCustomElement: (tag) => {
                 //     let check = false
                 //     if (tag.startsWith('something other')) {
@@ -88,7 +93,17 @@ module.exports = configure(function (ctx) {
                 //     }
                 //     return check
                 // }
-            }
+                transformAssetUrls: {
+                    aAssetItem: 'src',
+                    'a-asset-item': 'src',
+                    'a-entity': 'src',
+                },
+            },
+            transformAssetUrls: {
+                aAssetItem: 'src',
+                'a-asset-item': 'src',
+                'a-entity': 'src',
+            },
         },
     },
 
