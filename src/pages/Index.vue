@@ -1,12 +1,14 @@
 <template>
-    <q-page class="flex flex-center">
+    <!-- <q-page class="flex flex-center"> -->
+    <q-page class="">
         <aframe
+            class="absolute-full"
             :file="file"
             v-model:animations="animations"
         ></aframe>
         <div class="overlay">
             <section class="load_model">
-                <h1>Load Model</h1>
+                <h4 >Load Model</h4>
                 <q-file
                     v-model="file"
                     label="Pick one file"
@@ -15,7 +17,7 @@
                 />
             </section>
             <section class="animation_controls">
-                <h1>Animation Controls</h1>
+                <h4>Animation Controls</h4>
                 <div id="animation_list">
                     <ul>
                         <li>-</li>
@@ -43,8 +45,6 @@ import {
 
 import Aframe from 'components/aframe.vue'
 
-
-
 export default defineComponent({
     name: 'PageIndex',
     setup () {
@@ -55,6 +55,9 @@ export default defineComponent({
             animations:animations,
             file: ref(null)
         }
+    },
+    components: {
+        Aframe
     }
 })
 
@@ -82,6 +85,7 @@ export default defineComponent({
     overflow: hidden;
     position: fixed;
     top: 0;
+    right: 0;
     /* max-width: calc(99vw - 2em); */
     /* max-height: calc(99vh - 2em); */
     /* height: calc(99vh - 2em); */

@@ -1,11 +1,13 @@
 <template lang="html">
+<div class="aframe_wrapper">
+    <!-- <p>Hello Aframe World!</p> -->
     <a-scene
         embedded
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false"
-        loading-screen="dotsColor: gray; backgroundColor: white"
+        loading-screen="dotsColor: gray; backgroundColor: transparent"
         stats
-        
+
         shadow="type: pcfsoft; autoUpdate: true;"
         renderer="
             antialias: true;
@@ -16,11 +18,14 @@
         "
         init_scene
     >
+        <!-- MAGIC-COMMENT src_prepend="./assets/aframe_things" -->
+        <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"assets/aframe_things/" -->
         <a-assets>
             <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
+            <a-asset-item id="TestCube" src="./assets/aframe_things/assets/aframe_things/assets/Cube.gltf" ></a-asset-item>
+                            <a-asset-item id="Cube" src="./assets/aframe_things/assets/Cube.gltf" ></a-asset-item>
 
-                            <a-asset-item id="Cube" src="./assets/Cube.gltf" ></a-asset-item>
-<img id="sky" src="./env//hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
+            <!-- <img id="sky" src="./assets/aframe_things/assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" /> -->
         </a-assets>
 
         <a-box
@@ -35,7 +40,7 @@
             animation__click="property: object3D.rotation.x; to: '*=4'; dur: 3000; startEvents: click;"
         ></a-box>
 
-                        <a-entity 
+                        <a-entity
                     gltf-model="#Cube"
 
                     id="#Cube"
@@ -45,7 +50,7 @@
                     shadow="cast: true"
                     visible="true"
                 ></a-entity>
-<a-sky src="#sky" material="" geometry="" rotation="0 90 0"></a-sky>
+<a-sky id="#sky" color="#ECECFF"></a-sky>
 
         <!-- Camera -->
         <!-- https://github.com/supermedium/superframe/tree/master/components/orbit-controls -->
@@ -90,7 +95,7 @@
             showLine: true;
             lineColor: red;
             lineOpacity: 0.5
-            
+
             -->
             </a-entity>
         </a-entity>
@@ -164,9 +169,15 @@
             you need javascript to view this application!
         </noscript>
     </a-scene>
+</div>
 </template>
 
 <script>
+import {
+    defineComponent,
+    ref,
+    onMounted
+} from 'vue';
 
 import 'aframe';
 import 'aframe-extras';
@@ -176,7 +187,10 @@ import  myAframeComponents from './my-aframe-components.js';
 
 
 export default {
-    name: 'Aframe',
+    name: 'AframeComponent',
+    props: {
+        file: String,
+    },
     model: {
         prop: 'title',
         event: 'change'
@@ -184,8 +198,9 @@ export default {
     setup () {
         myAframeComponents()
        // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
-       file = "./assets/Cube.gltf"
-       file_obj = ref(URL.createObjectURL(file))
+       var file = "./assets/Cube.gltf"
+       // URL.createObjectURL(file)
+       const file_obj = ref("")
        return {
            file_obj: file_obj
        }
@@ -194,9 +209,15 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.aframe_wrapper {
+    display: block;
+    min-width: 100px;
+    min-height: 100px;
+}
 
 a-scene {
     min-width: 100px;
     min-height: 100px;
+    border: solid 1px lime;
 }
 </style>

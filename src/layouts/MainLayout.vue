@@ -40,6 +40,23 @@
                 </q-item-label>
                 <EssentialNavigation/>
                 <q-item-label
+                >
+                    <q-btn
+                        flat
+                        icon="light"
+                        aria-label="DarkMode"
+                        @click="$q.dark.toggle"
+                        label="toggle dark mode"
+                    />
+                </q-item-label>
+                <q-item-label
+                    class="absolute-bottom"
+                    stlye="margin-bottom:2em;"
+                >
+                    dark: {{ $q.dark.mode }}<br>
+                    .
+                </q-item-label>
+                <q-item-label
                     class="absolute-bottom"
                 >
                     Quasar v{{ $q.version }}
@@ -47,9 +64,11 @@
                 </q-item-label>
             </q-list>
         </q-drawer>
+
         <q-page-container>
             <router-view />
         </q-page-container>
+
     </q-layout>
 </template>
 
