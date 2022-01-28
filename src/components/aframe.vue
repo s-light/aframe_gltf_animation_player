@@ -5,7 +5,7 @@
         embedded
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false"
-        loading-screen="dotsColor: gray; backgroundColor: transparent"
+        loading-screen="dotsColor: gray; backgroundColor: white"
         stats
         
         shadow="type: pcfsoft; autoUpdate: true;"
@@ -21,12 +21,14 @@
         <!-- NO-MAGIC-COMMENT src_prepend="~assets/aframe_things" -->
         <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"/aframe_things/" -->
         <a-assets>
-            <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
+            <!-- <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item> -->
             <a-asset-item id="floorPlane_mesh" src="/aframe_things/assets/floorPlane_mesh.gltf" ></a-asset-item>
             <a-asset-item id="thething" src="/aframe_things/assets/thething.gltf" ></a-asset-item>
             <img id="sky" src="/aframe_things/env//hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
         </a-assets>
 
+
+        <!-- Entities -->
         <a-box
             position="0 1 -2.5"
             rotation="90.00000250447816 0.0 -0.0"
@@ -84,7 +86,7 @@
                 minZoom: 0;
                 enablePan: false;
                 autoRotate: true;
-                autoRotateSpeed: -0.02;
+                autoRotateSpeed: 0.0002;
             "
         >
             <a-entity
@@ -110,6 +112,8 @@
             -->
             </a-entity>
         </a-entity>
+
+
 
         <!-- Lights -->
         <a-entity
@@ -180,6 +184,11 @@
 </div>
 </template>
 
+
+
+
+
+
 <script>
 import {
     defineComponent,
@@ -187,9 +196,9 @@ import {
     onMounted
 } from 'vue';
 
+import 'aframe-orbit-controls';
 import 'aframe';
 import 'aframe-extras';
-import 'aframe-orbit-controls';
 
 // import  myAframeComponents from './my-aframe-components.js';
 
@@ -215,6 +224,11 @@ export default {
     }
 }
 </script>
+
+
+
+
+
 
 <style lang="css">
 .aframe_wrapper {

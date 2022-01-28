@@ -5,7 +5,7 @@
         embedded
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false"
-        loading-screen="dotsColor: gray; backgroundColor: transparent"
+        loading-screen="dotsColor: gray; backgroundColor: white"
         ${stats}
         ${joystick}
         ${render_shadows}
@@ -15,10 +15,12 @@
         <!-- NO-MAGIC-COMMENT src_prepend="~assets/aframe_things" -->
         <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"/aframe_things/" -->
         <a-assets>
-            <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
+            <!-- <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item> -->
 ${asset}
         </a-assets>
 
+
+        <!-- Entities -->
         <a-box
             position="0 1 -2.5"
             rotation="90.00000250447816 0.0 -0.0"
@@ -80,6 +82,8 @@ ${asset}
             -->
             </a-entity>
         </a-entity>
+
+
 
         <!-- Lights -->
         <a-entity
@@ -150,6 +154,11 @@ ${asset}
 </div>
 </template>
 
+
+
+
+
+
 <script>
 import {
     defineComponent,
@@ -185,6 +194,11 @@ export default {
     }
 }
 </script>
+
+
+
+
+
 
 <style lang="css">
 .aframe_wrapper {
