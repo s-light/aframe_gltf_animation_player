@@ -7,7 +7,7 @@
         device-orientation-permission-ui="enabled: false"
         loading-screen="dotsColor: gray; backgroundColor: transparent"
         stats
-
+        
         shadow="type: pcfsoft; autoUpdate: true;"
         renderer="
             antialias: true;
@@ -18,14 +18,13 @@
         "
         init_scene
     >
-        <!-- MAGIC-COMMENT src_prepend="~assets/aframe_things" -->
-        <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"assets/aframe_things/" -->
+        <!-- NO-MAGIC-COMMENT src_prepend="~assets/aframe_things" -->
+        <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"/aframe_things/" -->
         <a-assets>
             <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
-            <!-- <a-asset-item id="CubeX" src="~assets/aframe_things/assets/Cube.gltf" ></a-asset-item> -->
-            <!-- <a-asset-item id="Cube" src="~assets/aframe_things/assets/Cube.gltf" ></a-asset-item> -->
-            <a-asset-item id="CubeX" src="~assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" ></a-asset-item>
-            <img id="sky"            src="~assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
+            <a-asset-item id="floorPlane_mesh" src="/aframe_things/assets/floorPlane_mesh.gltf" ></a-asset-item>
+            <a-asset-item id="thething" src="/aframe_things/assets/thething.gltf" ></a-asset-item>
+            <img id="sky" src="/aframe_things/env//hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
         </a-assets>
 
         <a-box
@@ -40,21 +39,32 @@
             animation__click="property: object3D.rotation.x; to: '*=4'; dur: 3000; startEvents: click;"
         ></a-box>
 
-                        <a-entity
-                    gltf-model="#Cube"
+                    <a-entity 
+                gltf-model="#floorPlane_mesh"
 
-                    id="#Cube"
-                    position="0.0 0.0 -0.0"
-                    rotation="0.0 -0.0 0.0"
-                    scale="1 1 1"
-                    shadow="cast: true"
-                    visible="true"
-                ></a-entity>
-<a-sky id="#sky" color="#ECECFF"></a-sky>
+                id="#floorPlane"
+                position="0.0 0.0 -0.0"
+                rotation="0.0 -0.0 0.0"
+                scale="1 1 1"
+                shadow="cast: true"
+                visible="true"
+            ></a-entity>
+            <a-entity 
+                class="clickable"
+                animation_mixer=""
+                gltf-model="#thething"
+
+                id="#thething_object"
+                position="0.0 0.0 -0.0"
+                rotation="0.0 0.0 -0.0"
+                scale="1 1 1"
+                shadow="cast: true"
+                visible="true"
+            ></a-entity>
+        <a-sky src="#sky" material="" geometry="" rotation="0 90 0"></a-sky>
 
         <!-- Camera -->
         <!-- https://github.com/supermedium/superframe/tree/master/components/orbit-controls -->
-        <!-- https://stackoverflow.com/questions/53435562/enable-orbit-controls-in-vr -->
         <a-entity id="camera"
             camera="
                 fov:  60;
@@ -96,13 +106,10 @@
             showLine: true;
             lineColor: red;
             lineOpacity: 0.5
-
+            
             -->
             </a-entity>
         </a-entity>
-        <!--
-        look-controls="pointerLockEnabled: true"
-        -->
 
         <!-- Lights -->
         <a-entity
@@ -184,7 +191,7 @@ import 'aframe';
 import 'aframe-extras';
 import 'aframe-orbit-controls';
 
-import  myAframeComponents from './my-aframe-components.js';
+// import  myAframeComponents from './my-aframe-components.js';
 
 
 export default {
@@ -197,8 +204,7 @@ export default {
         event: 'change'
     },
     setup () {
-        myAframeComponents()
-        // ^ this is now done in a boot file.
+        // myAframeComponents()
        // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
        // var file = "./assets/Cube.gltf"
        // console.log("URL.createObjectURL(file)", URL.createObjectURL(this.file))
@@ -210,7 +216,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 .aframe_wrapper {
     display: block;
     min-width: 100px;
@@ -221,5 +227,61 @@ a-scene {
     min-width: 100px;
     min-height: 100px;
     border: solid 1px lime;
+}
+
+
+
+
+
+/* aframe stats */
+.rs-base {
+    font-size: 18px !important;
+    line-height: 18px !important;
+    width: 450px !important;
+    left: 10vw !important;
+}
+
+.rs-base h1 {
+	margin: 0;
+    line-height: 1em !important;
+}
+
+.rs-group {
+    margin: 0 0 0 1em;
+}
+
+
+.rs-counter-base {
+    height: 26px !important;
+    margin: 0;
+}
+
+.rs-counter-base.alarm {
+	color: hsl(0, 100%, 51.4%);
+	text-shadow:
+        0 0 0 hsl(0, 100%, 50%),
+        0 0 1px hsl(0, 0%, 0%),
+        0 0 1px hsl(0, 0%, 0%),
+        0 0 2px hsl(0, 0%, 0%),
+        0 0 2px hsl(0, 0%, 0%),
+        0 0 3px hsl(0, 0%, 0%),
+        0 0 3px hsl(0, 0%, 0%),
+        0 0 4px hsl(0, 0%, 0%),
+        0 0 4px hsl(0, 0%, 0%),
+        0 0 6px hsl(0, 0%, 0%);
+}
+
+
+.rs-counter-id {
+    width: 100px !important;
+}
+
+.rs-counter-value {
+    width: 50px !important;
+}
+
+canvas.rs-canvas {
+    width: 250px !important;
+    height: 20px !important;
 }
 </style>
