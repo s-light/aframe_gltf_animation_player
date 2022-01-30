@@ -9,11 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <script src="main.bundle.js"></script>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="./js/aframe-v1.2.0.js"></script>
+    <script src="./js/aframe-extras.js"></script>
+    <script src="./js/aframe-orbit-controls.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="main.css"> -->
 </head>
 <body>
     <a-scene
+        id="aframe_scene"
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false"
         loading-screen="dotsColor: gray; backgroundColor: white"
@@ -47,7 +50,7 @@
         -->
         <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"/aframe_things/" -->
         <a-assets>
-            <a-asset-item id="floorPlane_mesh" src="./assets/floorPlane_mesh.gltf" ></a-asset-item>
+            <img id="icon-play" src="./resources//play.png" crossorigin="anonymous" />            <img id="icon-pause" src="./resources//pause.png" crossorigin="anonymous" />            <img id="icon-play-skip-back" src="./resources//play-skip-back.png" crossorigin="anonymous" />            <img id="icon-mute" src="./resources//mute.png" crossorigin="anonymous" />            <img id="icon-volume-low" src="./resources//volume-low.png" crossorigin="anonymous" />            <img id="icon-volume-high" src="./resources//volume-high.png" crossorigin="anonymous" />            <img id="image1" src="./media//image1.png" crossorigin="anonymous" />            <img id="image2" src="./media//image2.png" crossorigin="anonymous" />            <a-asset-item id="floorPlane_mesh" src="./assets/floorPlane_mesh.gltf" ></a-asset-item>
             <a-asset-item id="thething" src="./assets/thething.gltf" ></a-asset-item>
             <img id="sky" src="./env//hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
         </a-assets>
@@ -126,7 +129,7 @@
             look-controls="enabled:false"
             orbit-controls="
                 target: 0 1.7000000476837158 0;
-                initialPosition: 0 1.7000000476837158 1.2;
+                initialPosition: 0 1.7000000476837158 3.0;
                 minPolarAngle: 40;
                 maxPolarAngle: 120;
                 rotateSpeed: 0.10000000149011612;
@@ -245,13 +248,16 @@
 
     <div class="overlay">
         <section class="load_model">
-            <h4 >Load Model</h4>
-            <q-file
-                v-model="file"
-                label="Pick one file"
-                filled
+            <input
+                type="file"
+                id="fileElem"
+                class="visually-hidden"
                 accept=".gltf, .glb"
             />
+            <label for="fileElem">Select some files</label>
+            <div id="dropzone" class="dropzone">
+                drop your file here
+            </div>
         </section>
         <section class="animation_controls">
             <h4>Animation Controls</h4>
@@ -261,10 +267,9 @@
                 </ul>
             </div>
         </section>
-        <!-- <img id="sky" src="~assets/aframe_things/env/hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" /> -->
     </div>
 
-    <style lang="css">
+<style lang="css">
     /* overlay things */
     /* section-wrapper */
     .overlay {
@@ -278,7 +283,110 @@
         /* height: calc(99vh - 2em); */
         z-index: 100;
     }
-    </style>
+
+    /* https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#using_a_label_element_to_trigger_a_hidden_file_input_element */
+    .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+    }
+
+    /* Separate rule for compatibility, :focus-within is required on modern Firefox and Chrome */
+    input.visually-hidden:focus + label {
+        outline: thin dotted;
+    }
+    input.visually-hidden:focus-within + label {
+        outline: thin dotted;
+    }
+
+    .dropzone {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: auto;
+        bottom: auto;
+        margin: 1em;
+        border-radius: 2em;
+        background: solid hsla(200, 100%, 50%, 0.5);
+        opacity: 0.0;
+        transition: opacity 1s, left 2s, bottom 2s;
+    }
+    .dropzone.active {
+        opacity: 1.0;
+        left: 0;
+        bottom: 0;
+        transition: opacity 1s, left 2s, bottom 2s;
+    }
+</style>
+
+<script type="text/javascript">
+    let aframe_scene;
+    let dropzone;
+
+    aframe_scene = document.getElementById("aframe_scene");
+    dropzone = document.getElementById("dropzone");
+
+    // make scene drop active
+    aframe_scene.addEventListener("dragenter", event => {
+        event.stopPropagation();
+        event.preventDefault();
+        dropzone.classList.add("active");
+    }, false);
+    aframe_scene.addEventListener("dragover", event => {
+        event.stopPropagation();
+        event.preventDefault();
+    }, false);
+    aframe_scene.addEventListener("dragleave", event => {
+        event.stopPropagation();
+        event.preventDefault();
+        dropzone.classList.remove("active");
+    }, false);
+
+    dropzone.addEventListener("dragenter", event => {
+        event.stopPropagation();
+        event.preventDefault();
+    }, false);
+    dropzone.addEventListener("dragover", event => {
+        event.stopPropagation();
+        event.preventDefault();
+    }, false);
+    dropzone.addEventListener("dragleave", event => {
+        event.stopPropagation();
+        event.preventDefault();
+    }, false);
+    dropzone.addEventListener("drop", event => {
+        event.stopPropagation();
+        event.preventDefault();
+        dropzone.classList.remove("active");
+        const dt = e.dataTransfer;
+         const files = dt.files;
+         handleFiles(files);
+    }, false);
+
+
+    function handleFiles(files) {
+        if (files.length > 0) {
+            // we use only the first file..
+            const file = files[0];
+        }
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+
+            if (!file.type.startsWith('image/')){ continue }
+
+            const img = document.createElement("img");
+            img.classList.add("obj");
+            img.file = file;
+            preview.appendChild(img); // Assuming that "preview" is the div output where the content will be displayed.
+
+            const reader = new FileReader();
+            reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+            reader.readAsDataURL(file);
+        }
+    }
+
+</script>
 </body>
 </html>
-<!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->

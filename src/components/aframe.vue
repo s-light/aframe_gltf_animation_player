@@ -22,7 +22,7 @@
         <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"/aframe_things/" -->
         <a-assets>
             <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
-            <a-asset-item id="floorPlane_mesh" src="/aframe_things/assets/floorPlane_mesh.gltf" ></a-asset-item>
+            <img id="icon-play" src="/aframe_things/resources//play.png" crossorigin="anonymous" />            <img id="icon-pause" src="/aframe_things/resources//pause.png" crossorigin="anonymous" />            <img id="icon-play-skip-back" src="/aframe_things/resources//play-skip-back.png" crossorigin="anonymous" />            <img id="icon-mute" src="/aframe_things/resources//mute.png" crossorigin="anonymous" />            <img id="icon-volume-low" src="/aframe_things/resources//volume-low.png" crossorigin="anonymous" />            <img id="icon-volume-high" src="/aframe_things/resources//volume-high.png" crossorigin="anonymous" />            <img id="image1" src="/aframe_things/media//image1.png" crossorigin="anonymous" />            <img id="image2" src="/aframe_things/media//image2.png" crossorigin="anonymous" />            <a-asset-item id="floorPlane_mesh" src="/aframe_things/assets/floorPlane_mesh.gltf" ></a-asset-item>
             <a-asset-item id="thething" src="/aframe_things/assets/thething.gltf" ></a-asset-item>
             <img id="sky" src="/aframe_things/env//hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
         </a-assets>
