@@ -25,3 +25,79 @@ a-scene{
     -moz-opacity: 0.5;
     opacity: 0.5;
 }
+
+/* overlay things */
+.overlay {
+    display: block;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    /* max-width: calc(99vw - 2em); */
+    /* max-height: calc(99vh - 2em); */
+    /* height: calc(99vh - 2em); */
+    z-index: 100;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#using_a_label_element_to_trigger_a_hidden_file_input_element */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Separate rule for compatibility, :focus-within is required on modern Firefox and Chrome */
+input.visually-hidden:focus + label {
+    outline: thin dotted;
+}
+input.visually-hidden:focus-within + label {
+    outline: thin dotted;
+}
+
+.dropzone {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    bottom: auto;
+    margin: 2vw;
+    border-radius: 3vw;
+    background: hsla(220, 98%, 15%, 0.8);
+    opacity: 0.0;
+    transition: opacity 1s, left 2s, bottom 2s;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.dropzone.active {
+    opacity: 1.0;
+    left: 0;
+    bottom: 0;
+    transition: opacity 1s, left 2s, bottom 2s;
+}
+
+.dropzone > p {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    font-size: min(5vh, 5vw);
+}
+
+
+.animation_controls {
+	z-index: 1999;
+	position: relative;
+	cursor: pointer;
+}
+.animation_controls li {
+	z-index: 2000;
+	position: relative;
+	cursor: pointer;
+}
