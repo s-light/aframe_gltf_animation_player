@@ -21,7 +21,7 @@
         <!-- NO-MAGIC-COMMENT src_prepend="~assets/aframe_things" -->
         <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"/aframe_things/" -->
         <a-assets>
-            <!-- <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item> -->
+            <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
             <a-asset-item id="floorPlane_mesh" src="/aframe_things/assets/floorPlane_mesh.gltf" ></a-asset-item>
             <a-asset-item id="thething" src="/aframe_things/assets/thething.gltf" ></a-asset-item>
             <img id="sky" src="/aframe_things/env//hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
@@ -64,6 +64,18 @@
                 visible="true"
             ></a-entity>
         <a-sky src="#sky" material="" geometry="" rotation="0 90 0"></a-sky>
+        <a-entity
+            gltf-model="#TheModel"
+            id="TheModelEntity"
+            position="0.0 0.0 -0.0"
+            rotation="0.0 -0.0 0.0"
+            scale="1 1 1"
+            shadow="cast: true"
+            visible="true"
+        ></a-entity>
+
+
+
 
         <!-- Camera -->
         <!-- https://github.com/supermedium/superframe/tree/master/components/orbit-controls -->
@@ -86,7 +98,7 @@
                 minZoom: 0;
                 enablePan: false;
                 autoRotate: true;
-                autoRotateSpeed: 0.0002;
+                autoRotateSpeed: -0.02;
             "
         >
             <a-entity
@@ -192,13 +204,15 @@
 <script>
 import {
     defineComponent,
+    computed,
     ref,
+    toRefs,
     onMounted
 } from 'vue';
 
-import 'aframe-orbit-controls';
 import 'aframe';
 import 'aframe-extras';
+import 'aframe-orbit-controls';
 
 // import  myAframeComponents from './my-aframe-components.js';
 
@@ -206,22 +220,36 @@ import 'aframe-extras';
 export default {
     name: 'AframeComponent',
     props: {
-        file: String,
+        file: [String, Object],
     },
     model: {
-        prop: 'title',
+        prop: 'animations',
         event: 'change'
     },
-    setup () {
+    setup (props) {
         // myAframeComponents()
        // const { connected, goal1, goal2 } = connectionGoalDetectionMini()
        // var file = "./assets/Cube.gltf"
        // console.log("URL.createObjectURL(file)", URL.createObjectURL(this.file))
-       const file_obj = ref("")
+       // const file_obj = ref("")
+       const { file } = toRefs(props)
+
+       const file_obj = computed(() => {
+           console.log("file_obj computed:");
+           console.log("  file", file);
+           console.log("  file.value", file.value);
+           let result = ""
+           if (file.value) {
+               result = URL.createObjectURL(file.value)
+           }
+           console.log("  result", result);
+           return result
+       })
+
        return {
            file_obj: file_obj
        }
-    }
+   },
 }
 </script>
 

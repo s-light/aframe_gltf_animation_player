@@ -41,7 +41,7 @@
     ],
     "meshes" : [
         {
-            "name" : "Plane",
+            "name" : "floorPlane_mesh",
             "primitives" : [
                 {
                     "attributes" : {
