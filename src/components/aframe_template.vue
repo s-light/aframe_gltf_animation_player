@@ -57,18 +57,18 @@ ${asset}
             look-controls="enabled:false"
             orbit-controls="
                 target: 0 ${player_height} 0;
-                initialPosition: 0 ${player_height} 1.2;
+                initialPosition: 0 ${player_height} 0.6;
                 minPolarAngle: 40;
                 maxPolarAngle: 120;
                 rotateSpeed: ${player_speed};
-                enableZoom: false;
+                enableZoom: true;
                 zoomSpeed: 1;
-                minDistance: 0;
+                minDistance: 0.1;
                 maxDistance: 2.8;
-                minZoom: 0;
+                minZoom: 0.1;
                 enablePan: false;
                 autoRotate: true;
-                autoRotateSpeed: -0.02;
+                autoRotateSpeed: -0.01;
             "
         >
             <a-entity
