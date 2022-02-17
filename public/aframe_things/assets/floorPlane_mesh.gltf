@@ -1,6 +1,6 @@
 {
     "asset" : {
-        "generator" : "Khronos glTF Blender I/O v1.8.6",
+        "generator" : "Khronos glTF Blender I/O v3.2.6",
         "version" : "2.0"
     },
     "scene" : 0,
@@ -25,14 +25,15 @@
     ],
     "materials" : [
         {
+            "alphaMode" : "BLEND",
             "doubleSided" : true,
             "name" : "Material",
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
-                    0.19115468859672546,
-                    0.8000000715255737,
-                    0.5788651704788208,
-                    1
+                    0.23323895037174225,
+                    0.31634148955345154,
+                    1,
+                    0.5
                 ],
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0.5

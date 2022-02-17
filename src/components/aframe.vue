@@ -13,8 +13,8 @@
             antialias: true;
             colorManagement: true;
             physicallyCorrectLights: true;
-            maxCanvasWidth: 1600;
-            maxCanvasHeight: 1200;
+            maxCanvasWidth: -1;
+            maxCanvasHeight: -1;
         "
         init_scene
     >
@@ -22,7 +22,17 @@
         <!-- MAGIC-COMMENT replace_search="src=\"./" replace_with="src=\"/aframe_things/" -->
         <a-assets>
             <a-asset-item id="TheModel" :src="file_obj" ></a-asset-item>
-            <img id="icon-play" src="/aframe_things/resources//play.png" crossorigin="anonymous" />            <img id="icon-pause" src="/aframe_things/resources//pause.png" crossorigin="anonymous" />            <img id="icon-play-skip-back" src="/aframe_things/resources//play-skip-back.png" crossorigin="anonymous" />            <img id="icon-mute" src="/aframe_things/resources//mute.png" crossorigin="anonymous" />            <img id="icon-volume-low" src="/aframe_things/resources//volume-low.png" crossorigin="anonymous" />            <img id="icon-volume-high" src="/aframe_things/resources//volume-high.png" crossorigin="anonymous" />            <img id="image1" src="/aframe_things/media//image1.png" crossorigin="anonymous" />            <img id="image2" src="/aframe_things/media//image2.png" crossorigin="anonymous" />            <img id="sky" src="/aframe_things/env//hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
+            <img id="icon-play" src="/aframe_things/resources//play.png" crossorigin="anonymous" />
+            <img id="icon-pause" src="/aframe_things/resources//pause.png" crossorigin="anonymous" />
+            <img id="icon-play-skip-back" src="/aframe_things/resources//play-skip-back.png" crossorigin="anonymous" />
+            <img id="icon-mute" src="/aframe_things/resources//mute.png" crossorigin="anonymous" />
+            <img id="icon-volume-low" src="/aframe_things/resources//volume-low.png" crossorigin="anonymous" />
+            <img id="icon-volume-high" src="/aframe_things/resources//volume-high.png" crossorigin="anonymous" />
+            <img id="image1" src="/aframe_things/media//image1.png" crossorigin="anonymous" />
+            <img id="image2" src="/aframe_things/media//image2.png" crossorigin="anonymous" />
+            <a-asset-item id="floorPlane_mesh" src="/aframe_things/assets/floorPlane_mesh.gltf" ></a-asset-item>
+            <img id="sky" src="/aframe_things/env//hilly_terrain_01__Q85P_8192x4096.jpg" crossorigin="anonymous" />
+
         </a-assets>
 
 
@@ -39,7 +49,28 @@
             animation__click="property: object3D.rotation.x; to: '*=4'; dur: 3000; startEvents: click;"
         ></a-box>
 
-                <a-sky src="#sky" material="" geometry="" rotation="0 90 0"></a-sky>
+        <a-entity 
+    id="collection__my_world"
+    position="0 0 0"
+    rotation="0 0 0"
+    scale="1 1 1"
+    shadow="cast: true"
+    visible="true"
+>
+        <a-entity 
+            gltf-model="#floorPlane_mesh"
+            id="floorPlane"
+            position="0.0 0.0 -0.0"
+            rotation="0.0 -0.0 0.0"
+            scale="1 1 1"
+            shadow="cast: true"
+            visible="true"
+        >
+        
+        </a-entity>
+
+</a-entity>
+        <a-sky src="#sky" material="" geometry="" rotation="0 90 0"></a-sky>
         <a-entity
             gltf-model="#TheModel"
             id="TheModelEntity"
